@@ -1,21 +1,13 @@
-#include <fstream>
+#include <iostream>
 
-using namespace std;
+#include "painter.h"
 
-const int width = 255, height = 255;
+using namespace render;
 
 int main(int argc, char** argv) {
-    ofstream img("result.ppm");
-    img << "P3" << endl;
-    img << width << " " << height << endl;
-    img << "255" << endl;
+    
+    render::Painter painter(800, 600, "result.ppm");
+    painter.init_img();
+    painter.cleanup();
 
-    for (int y = 0; y < height; y++) {
-        for (int x = 0; x < width; x++) {
-            int r = x % 255;
-            int g = y % 255;
-            int b = y * x % 255;
-            img << r << " " << g << " " << b << endl;
-        }
-    }
 }
