@@ -304,5 +304,5 @@ int main(int argc, char **argv)
         }
     }
 
-    image.save_image("result.bmp");
+    image.save_image("result_rendering.bmp");
 }

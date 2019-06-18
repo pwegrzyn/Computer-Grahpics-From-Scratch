@@ -18,7 +18,7 @@ sphere_t spheres[SPHERES] = {sphere_t{coords_t{0, -1, 3}, 1, rgb_t{255, 0, 0}, 5
                              sphere_t{coords_t{0, -5001, 0}, 5000, rgb_t{255, 255, 0}, 1000, 0.5},
                              sphere_t{coords_t{80, 80, 250}, 20, rgb_t{80, 89, 150}, 700, 0.4}};
 ```
-![alt text](result.bmp)
+![alt text](result_rendering.bmp)
 
 ## Assumptions
 * Recursive ray-tracing
