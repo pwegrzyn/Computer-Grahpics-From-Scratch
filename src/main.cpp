@@ -1,6 +1,7 @@
 #include <iostream>
 
-#include "painter.h"
+#include "painter.hpp"
+#include "bitmap_image.hpp"
 
 using namespace render;
 

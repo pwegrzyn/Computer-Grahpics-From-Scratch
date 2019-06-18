@@ -3,11 +3,13 @@ Simple raytracer and rasterizer made to learn the basiscs of computer graphics
 
 Based on Gabriel Gambetta's online [textbook](https://www.gabrielgambetta.com/computer-graphics-from-scratch/common-concepts.html).
 
+Using the awesome ArashPartow/bitmap mini-library.
+
 ## To run:
 ```bash
 mkdir build
 cd build
-cmake .
+cmake ..
 make
 ./renderer
 ```

@@ -1,6 +1,6 @@
 #include <string>
 
-#include "painter.h"
+#include "painter.hpp"
 
 using namespace render;
 
