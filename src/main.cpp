@@ -289,7 +289,7 @@ int main(int argc, char **argv)
 
     int ray_tracing_recursion_limit = 3;
     // Change the postion of the camera
-    coords_t camera {0, 0, 0};
+    coords_t camera {0, 0, -2};
     coords_t transformed;
     for (int x = - CANVAS_WIDTH / 2; x < CANVAS_WIDTH / 2; x++)
     {
