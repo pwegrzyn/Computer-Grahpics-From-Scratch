@@ -64,33 +64,33 @@ typedef struct light_tag
 } light_t;
 
 // -------------------- Add any spheres you want to the scene -----------------
-sphere_t spheres[SPHERES] = {sphere_t{coords_t{0, -1, 3}, 1, rgb_t{255, 0, 0}, 500, 0.2},
+static sphere_t spheres[SPHERES] = {sphere_t{coords_t{0, -1, 3}, 1, rgb_t{255, 0, 0}, 500, 0.2},
                              sphere_t{coords_t{2, 0, 4}, 1, rgb_t{0, 0, 255}, 500, 0.3},
                              sphere_t{coords_t{-3, 0, 4}, 2, rgb_t{0, 255, 0}, 10, 0.4},
                              sphere_t{coords_t{0, -5001, 0}, 5000, rgb_t{120, 120, 0}, 50, 0.1},
                              sphere_t{coords_t{80, 80, 250}, 20, rgb_t{80, 89, 150}, 700, 0.4}};
 
 // -------------------- Add any light sources you want to the scene ----------
-light_t lights[LIGHTS] = {light_t{AMBIENT, 0.2, coords_t {0,0,0}},
+static light_t lights[LIGHTS] = {light_t{AMBIENT, 0.2, coords_t {0,0,0}},
                           light_t{POINT, 0.6, coords_t {2,1,0}},
                           light_t{DIRECTIONAL, 0.2, coords_t{1,4,4}}};
 
-inline double canvas_to_viewport_x(int x) 
+static inline double canvas_to_viewport_x(int x) 
 {
     return x * ((double)VIEWPORT_WIDTH / CANVAS_WIDTH);
 }
 
-inline double canvas_to_viewport_y(int y) 
+static inline double canvas_to_viewport_y(int y) 
 {
     return y * ((double)VIEWPORT_HEIGHT / CANVAS_HEIGHT);
 }
 
-inline double canvas_to_viewport_z() 
+static inline double canvas_to_viewport_z() 
 {
     return VIEWPORT_DIST;
 }
 
-void put_pixel(bitmap_image* image, int x, int y, rgb_t color)
+static void put_pixel(bitmap_image* image, int x, int y, rgb_t color)
 {
     int x_prim = (int)(((double)CANVAS_WIDTH / 2) + x);
     int y_prim = (int)(((double)CANVAS_HEIGHT / 2) - y - 1);
@@ -101,24 +101,24 @@ void put_pixel(bitmap_image* image, int x, int y, rgb_t color)
     image->set_pixel(x_prim, y_prim, color);
 }
 
-double dot(coords_t a, coords_t b)
+static double dot(coords_t a, coords_t b)
 {
     return a.x * b.x + a.y * b.y + a.z * b.z;
 }
 
-double length(coords_t vector)
+static double length(coords_t vector)
 {
     return sqrt(dot(vector, vector));
 }
 
-void clamp_color(rgb_t* current_color, int new_red, int new_green, int new_blue)
+static void clamp_color(rgb_t* current_color, int new_red, int new_green, int new_blue)
 {
     current_color->red = std::min(255, std::max(0, new_red));
     current_color->green = std::min(255, std::max(0, new_green));
     current_color->blue = std::min(255, std::max(0, new_blue));
 }
 
-sphere_intersect_t* intersect_ray_sphere(coords_t origin, coords_t transformed, sphere_t sphere)
+static sphere_intersect_t* intersect_ray_sphere(coords_t origin, coords_t transformed, sphere_t sphere)
 {
     coords_t center = sphere.center;
     double radius = sphere.radius;
@@ -145,7 +145,7 @@ sphere_intersect_t* intersect_ray_sphere(coords_t origin, coords_t transformed, 
     return result;
 }
 
-closest_intersection_result* closest_intersection(coords_t origin, coords_t transformed, double t_min, double t_max)
+static closest_intersection_result* closest_intersection(coords_t origin, coords_t transformed, double t_min, double t_max)
 {
     closest_intersection_result* result = new closest_intersection_result;
     result->closest_sphere = -1;
@@ -168,7 +168,7 @@ closest_intersection_result* closest_intersection(coords_t origin, coords_t tran
     return result;
 }
 
-double compute_lighting(coords_t P, coords_t N, coords_t V, int s)
+static double compute_lighting(coords_t P, coords_t N, coords_t V, int s)
 {
     double intensity = 0.0;
     for (int i = 0; i < LIGHTS; i++)
@@ -227,7 +227,7 @@ double compute_lighting(coords_t P, coords_t N, coords_t V, int s)
     return intensity;
 }
 
-rgb_t trace_ray(coords_t origin, coords_t transformed, double t_min, double t_max, int depth)
+static rgb_t trace_ray(coords_t origin, coords_t transformed, double t_min, double t_max, int depth)
 {
     closest_intersection_result* result = closest_intersection(origin, transformed, t_min, t_max);
     int closest_sphere = result->closest_sphere;
