@@ -1,6 +1,8 @@
 # Computer-Graphics-From-Scratch
 Simple raytracer made to learn the basiscs of computer graphics
 
+Based on the online textook "Computer Graphics from scrtach" by Gabriel Gambetta.
+
 ## Exemplary Rendering scene
 ```bash
 sphere_t spheres[SPHERES] = {sphere_t{coords_t{0, -1, 3}, 1, rgb_t{255, 0, 0}, 500, 0.2},
