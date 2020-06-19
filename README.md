@@ -1,7 +1,7 @@
 # Computer-Graphics-From-Scratch
 Simple ray-tracer made to learn the basics of computer graphics.
 
-Based on the online textook "Computer Graphics from scratch" by Gabriel Gambetta.
+Based on the excellent online textook "Computer Graphics from scratch" by Gabriel Gambetta.
 
 ## Exemplary rendering scene
 ```bash
